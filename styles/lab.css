@@ -76,7 +76,10 @@ img{max-width:100%}
   .navtoggle[aria-expanded="true"] span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
   .navtoggle[aria-expanded="true"] span:nth-child(2){opacity:0}
   .navtoggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
-  .nlinks{position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:10px clamp(18px,4vw,48px) 24px;background:rgba(255,255,255,.98);backdrop-filter:blur(18px);border-bottom:1px solid var(--line2);max-height:calc(100vh - 68px);overflow-y:auto;transform:translateY(-12px);opacity:0;visibility:hidden;transition:.2s}
+  /* ponytail: iOS Safari blanks/jitters its own text when a fixed, scrollable panel
+     also carries backdrop-filter — drop the blur here and use a solid bg instead
+     (issue #43). 100dvh avoids the address-bar viewport shift that misaligns rows. */
+  .nlinks{position:fixed;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:10px clamp(18px,4vw,48px) 24px;background:#fff;border-bottom:1px solid var(--line2);max-height:calc(100dvh - 68px);overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateY(-12px);opacity:0;visibility:hidden;transition:.2s}
   .nlinks.open{transform:translateY(0);opacity:1;visibility:visible}
   .navgroup{flex-direction:column;align-items:stretch;border-top:1px solid var(--line2);padding-top:6px;margin-top:6px}
   .navgroup:first-child{border-top:none;margin-top:0}
